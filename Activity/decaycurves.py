@@ -3,26 +3,30 @@ import curie as ci
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
+import os
 
-df_AB = pd.read_csv('Spectroscopy/peak_summary/AB09232025_Cu09_52cm_IDM_peak_summary.csv')
-df_AI = pd.read_csv('Spectroscopy/peak_summary/AI09232025_Cu09_45cm_IDM_peak_summary.csv')
-df_BK = pd.read_csv('Spectroscopy/peak_summary/BK09242025_Cu09_30cm_IDM_peak_summary.csv')
-df_EY = pd.read_csv('Spectroscopy/peak_summary/EY09272025_Cu09_10cm_IDM_peak_summary.csv')
-df_DV = pd.read_csv('Spectroscopy/peak_summary/DV09252025_Cu09_10cm_IDM_peak_summary.csv')
+# df_AB = pd.read_csv('Spectroscopy/peak_summary/AB09232025_Cu09_52cm_IDM_peak_summary.csv')
+# df_AI = pd.read_csv('Spectroscopy/peak_summary/AI09232025_Cu09_45cm_IDM_peak_summary.csv')
+# df_BK = pd.read_csv('Spectroscopy/peak_summary/BK09242025_Cu09_30cm_IDM_peak_summary.csv')
+# df_EY = pd.read_csv('Spectroscopy/peak_summary/EY09272025_Cu09_10cm_IDM_peak_summary.csv')
+# df_DV = pd.read_csv('Spectroscopy/peak_summary/DV09252025_Cu09_10cm_IDM_peak_summary.csv')
 
-df_concat_Cu09 = pd.concat((df_AB, df_AI, df_BK, df_EY, df_DV), axis = 0)
-#df_concat_Cu09.to_csv('Cu09_IDM.csv')
-df_concat_Cu09.to_csv("Spectroscopy/combined/Cu09_IDM_combined.csv")
+peak_summaries = np.loadtxt(os.getcwd() + '/Cu01_peakdata.txt', dtype=str)
+print(peak_summaries)
 
-# dc = ci.DecayChain('62ZN', R=[[1e4, 1]], units='h')
-dc = ci.DecayChain('62ZN', A0=1.0e4, units='h')
-dc.get_counts('Cu09', EoB='09/23/2025 18:35:00', peak_data= 'Spectroscopy/combined/Cu09_IDM_combined.csv')
+# df_concat_Cu09 = pd.concat((df_AB, df_AI, df_BK, df_EY, df_DV), axis = 0)
+# #df_concat_Cu09.to_csv('Cu09_IDM.csv')
+# df_concat_Cu09.to_csv("Spectroscopy/combined/Cu09_IDM_combined.csv")
 
-# isotopes, R, cov_R = dc.fit_R()
-isotopes, A0, cov_A0 = dc.fit_A0()
-print(A0)
-dc.plot(title=f'Decay Plot for {df_concat_Cu09}')
-plt.show()
+# # dc = ci.DecayChain('62ZN', R=[[1e4, 1]], units='h')             # Curie er tydeligvis bedre på å bruke R fremfor A0
+# dc = ci.DecayChain('62ZN', A0=1.0e4, units='h')
+# dc.get_counts('Cu09', EoB='09/23/2025 18:35:00', peak_data= 'Spectroscopy/combined/Cu09_IDM_combined.csv')
+
+# # isotopes, R, cov_R = dc.fit_R()
+# isotopes, A0, cov_A0 = dc.fit_A0()
+# print(A0, cov_A0)
+# dc.plot(title=f'Decay Plot for {df_concat_Cu09}')
+# # plt.show()
 # print(R)
 
 

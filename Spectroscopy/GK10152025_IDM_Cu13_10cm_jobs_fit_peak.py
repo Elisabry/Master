@@ -41,7 +41,7 @@ print(type(sp))
 print(type(summed_spectra))
 
 summed_spectra.plot()
-# sp.plot()
+#sp.plot()
 #sp.saveas('filnavn!.png') 
 sp.saveas("Spectroscopy/peak_summary/GK10152025_IDM_Cu13_10cm_jobs_peak_summary.csv")
 #sp.summarize()

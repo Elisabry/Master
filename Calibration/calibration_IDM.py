@@ -234,8 +234,8 @@ def calibration_IDM_45cm():
     sp_Ba133.isotopes = ["133BA"]
     #sp_Ba133.plot()
  
-    #sp_Eu152 = ci.Spectrum("Calibration/BY20251017_IDM_Eu152_20cm.Spe")
-    #sp_Eu152.isotopes = ["152EU"]
+    sp_Eu152 = ci.Spectrum("Calibration/CO20251028_IDM_Eu152_45cm.Spe")
+    sp_Eu152.isotopes = ["152EU"]
     #sp_Eu152.plot()
 
     sp_Cs137 = ci.Spectrum('Calibration/BS20251017_IDM_Cs137_45cm.Spe')
@@ -244,13 +244,13 @@ def calibration_IDM_45cm():
 
 
     sources = [{'isotope':'133BA', 'A0':3.859E4, 'ref_date':'03/01/2019 12:00:00'},
-               #{'isotope':'152EU', 'A0':3.822E4, 'ref_date':'03/01/2019 12:00:00'},
+               {'isotope':'152EU', 'A0':3.822E4, 'ref_date':'03/01/2019 12:00:00'},
                {'isotope':'137CS', 'A0':3.670E4, 'ref_date':'03/01/2019 12:00:00'},
                #{'isotope':'56CO', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'}
                ]
     sources = pd.DataFrame(sources)
 
-    cb.calibrate([sp_Ba133, sp_Cs137], sources=sources) #Tok vekk de to andre, 137Cs og 56Co
+    cb.calibrate([sp_Ba133, sp_Cs137, sp_Eu152], sources=sources) #Tok vekk de to andre, 137Cs og 56Co
     #cb.plot()
     cb.saveas("Calibration/calibration_IDM_45cm.json")
 calibration_IDM_45cm()

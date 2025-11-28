@@ -35,7 +35,7 @@ summed_spectra.isotopes = [
     "56CO", "58CO", 
 ]
 
-print(type(sp))
+#print(type(sp))
 print(type(summed_spectra))
 
 summed_spectra.plot()
