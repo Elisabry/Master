@@ -19,10 +19,10 @@ df_concat_Cu09 = pd.concat((df_AB, df_AI, df_BK, df_EY, df_DV), axis=0)
 output_path = "Spectroscopy/combined"
 os.makedirs(output_path, exist_ok=True)
 
-# --- Save combined data ---
+# --- Save combined data, comment out when finished with file ---
 combined_csv_path = os.path.join(output_path, "Cu09_IDM_combined.csv")
-df_concat_Cu09.to_csv(combined_csv_path, index=False)
-print(f"Combined data saved to: {combined_csv_path}")
+# df_concat_Cu09.to_csv(combined_csv_path, index=False)
+# print(f"Combined data saved to: {combined_csv_path}")
 
 # --- Initialize decay chain ---
 dc = ci.DecayChain('62ZN', R=[[1e4, 1]], units='h')
@@ -30,7 +30,7 @@ dc = ci.DecayChain('62ZN', R=[[1e4, 1]], units='h')
 # --- Run decay analysis ---
 # Assuming get_counts() expects a file path for `peak_data`, not a DataFrame.
 # The first argument (foil_name) can be a string identifier.
-dc.get_counts('Cu09', EoB='09/23/2025 18:35:00', peak_data=combined_csv_path)
+dc.get_counts(spectra='',EoB='09/23/2025 18:35:00', peak_data=combined_csv_path)
 
 # --- Fit and plot decay results ---
 isotopes, R, cov_R = dc.fit_R()

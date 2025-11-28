@@ -12,15 +12,18 @@ df_DV = pd.read_csv('Spectroscopy/peak_summary/DV09252025_Cu09_10cm_IDM_peak_sum
 
 df_concat_Cu09 = pd.concat((df_AB, df_AI, df_BK, df_EY, df_DV), axis = 0)
 #df_concat_Cu09.to_csv('Cu09_IDM.csv')
-df_concat_Cu09.saveas("Spectroscopy/combined/Cu09_IDM_combined.csv")
+df_concat_Cu09.to_csv("Spectroscopy/combined/Cu09_IDM_combined.csv")
 
-dc = ci.DecayChain('62ZN', R=[[1e4, 1]], units='h')
-dc.get_counts(Cu09, EoB='09/23/2025 18:35:00', peak_data= 'Spectroscopy/combined/Cu09_IDM_combined.csv')
+# dc = ci.DecayChain('62ZN', R=[[1e4, 1]], units='h')
+dc = ci.DecayChain('62ZN', A0=1.0e4, units='h')
+dc.get_counts('Cu09', EoB='09/23/2025 18:35:00', peak_data= 'Spectroscopy/combined/Cu09_IDM_combined.csv')
 
-isotopes, R, cov_R = dc.fit_R()
+# isotopes, R, cov_R = dc.fit_R()
+isotopes, A0, cov_A0 = dc.fit_A0()
+print(A0)
 dc.plot(title=f'Decay Plot for {df_concat_Cu09}')
 plt.show()
-print(dc.R)
+# print(R)
 
 
 
