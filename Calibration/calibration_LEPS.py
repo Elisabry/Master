@@ -26,9 +26,9 @@ def calibration_LEPS_09cm():
 
     sources = [{'isotope':'133BA', 'A0':3.859E4, 'ref_date':'03/01/2019 12:00:00'},
                #{'isotope':'152EU', 'A0':3.822E4, 'ref_date':'03/01/2019 12:00:00'},
-               {'isotope':'109CD', 'A0':3.670E4, 'ref_date':'03/01/2019 12:00:00'},      # Er dette riktig dato og A0?
-               {'isotope':'56CO', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'},
-               {'isotope':'241AM', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'}       # Her og må vi fikse tall
+               {'isotope':'109CD', 'A0':3.774E4, 'ref_date':'03/01/2019 12:00:00'},      
+               {'isotope':'57CO', 'A0':4.3E4, 'ref_date':'11/01/2023 13:27:02'},
+               {'isotope':'241AM', 'A0':3.752E4, 'ref_date':'03/01/2019 12:00:00'}       
                ]
     sources = pd.DataFrame(sources)
 
@@ -60,12 +60,12 @@ def calibration_LEPS_10cm():
     sp_Cd109.isotopes = ['109CD'] 
     #sp_Cs137.plot()
 
-
+ 
     sources = [{'isotope':'133BA', 'A0':3.859E4, 'ref_date':'03/01/2019 12:00:00'},
                #{'isotope':'152EU', 'A0':3.822E4, 'ref_date':'03/01/2019 12:00:00'},
-               {'isotope':'109CD', 'A0':3.670E4, 'ref_date':'03/01/2019 12:00:00'},      # Er dette riktig dato og A0?
-               {'isotope':'56CO', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'},
-               {'isotope':'241AM', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'}       # Her og må vi fikse tall
+               {'isotope':'109CD', 'A0':3.774E4, 'ref_date':'03/01/2019 12:00:00'},      
+               {'isotope':'57CO', 'A0':4.3E4, 'ref_date':'11/01/2023 13:27:02'},
+               {'isotope':'241AM', 'A0':3.752E4, 'ref_date':'03/01/2019 12:00:00'}       
                ]
     sources = pd.DataFrame(sources)
 
@@ -100,9 +100,9 @@ def calibration_LEPS_15cm():
 
     sources = [{'isotope':'133BA', 'A0':3.859E4, 'ref_date':'03/01/2019 12:00:00'},
                #{'isotope':'152EU', 'A0':3.822E4, 'ref_date':'03/01/2019 12:00:00'},
-               {'isotope':'109CD', 'A0':3.670E4, 'ref_date':'03/01/2019 12:00:00'},      # Er dette riktig dato og A0?
-               {'isotope':'56CO', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'},
-               {'isotope':'241AM', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'}       # Her og må vi fikse tall
+               {'isotope':'109CD', 'A0':3.774E4, 'ref_date':'03/01/2019 12:00:00'},      
+               {'isotope':'57CO', 'A0':4.3E4, 'ref_date':'11/01/2023 13:27:02'},
+               {'isotope':'241AM', 'A0':3.752E4, 'ref_date':'03/01/2019 12:00:00'}       
                ]
     sources = pd.DataFrame(sources)
 
@@ -137,9 +137,9 @@ def calibration_LEPS_20cm():
 
     sources = [{'isotope':'133BA', 'A0':3.859E4, 'ref_date':'03/01/2019 12:00:00'},
                #{'isotope':'152EU', 'A0':3.822E4, 'ref_date':'03/01/2019 12:00:00'},
-               {'isotope':'109CD', 'A0':3.670E4, 'ref_date':'03/01/2019 12:00:00'},      # Er dette riktig dato og A0?
-               {'isotope':'56CO', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'},
-               {'isotope':'241AM', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'}       # Her og må vi fikse tall
+               {'isotope':'109CD', 'A0':3.774E4, 'ref_date':'03/01/2019 12:00:00'},      
+               {'isotope':'57CO', 'A0':4.3E4, 'ref_date':'11/01/2023 13:27:02'},
+               {'isotope':'241AM', 'A0':3.752E4, 'ref_date':'03/01/2019 12:00:00'}       
                ]
     sources = pd.DataFrame(sources)
 
@@ -175,9 +175,9 @@ def calibration_LEPS_30cm():
 
     sources = [{'isotope':'133BA', 'A0':3.859E4, 'ref_date':'03/01/2019 12:00:00'},
                #{'isotope':'152EU', 'A0':3.822E4, 'ref_date':'03/01/2019 12:00:00'},
-               {'isotope':'109CD', 'A0':3.670E4, 'ref_date':'03/01/2019 12:00:00'},      # Er dette riktig dato og A0?
-               {'isotope':'56CO', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'},
-               {'isotope':'241AM', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'}       # Her og må vi fikse tall
+               {'isotope':'109CD', 'A0':3.774E4, 'ref_date':'03/01/2019 12:00:00'},      
+               {'isotope':'57CO', 'A0':4.3E4, 'ref_date':'11/01/2023 13:27:02'},
+               {'isotope':'241AM', 'A0':3.752E4, 'ref_date':'03/01/2019 12:00:00'}       
                ]
     sources = pd.DataFrame(sources)
 
@@ -212,9 +212,9 @@ def calibration_LEPS_40cm():
 
     sources = [{'isotope':'133BA', 'A0':3.859E4, 'ref_date':'03/01/2019 12:00:00'},
                #{'isotope':'152EU', 'A0':3.822E4, 'ref_date':'03/01/2019 12:00:00'},
-               {'isotope':'109CD', 'A0':3.670E4, 'ref_date':'03/01/2019 12:00:00'},      # Er dette riktig dato og A0?
-               {'isotope':'56CO', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'},
-               {'isotope':'241AM', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'}       # Her og må vi fikse tall
+               {'isotope':'109CD', 'A0':3.774E4, 'ref_date':'03/01/2019 12:00:00'},      
+               {'isotope':'57CO', 'A0':4.3E4, 'ref_date':'11/01/2023 13:27:02'},
+               {'isotope':'241AM', 'A0':3.752E4, 'ref_date':'03/01/2019 12:00:00'}       
                ]
     sources = pd.DataFrame(sources)
 
@@ -249,9 +249,9 @@ def calibration_LEPS_60cm():
 
     sources = [{'isotope':'133BA', 'A0':3.859E4, 'ref_date':'03/01/2019 12:00:00'},
                #{'isotope':'152EU', 'A0':3.822E4, 'ref_date':'03/01/2019 12:00:00'},
-               #{'isotope':'109CD', 'A0':3.670E4, 'ref_date':'03/01/2019 12:00:00'},      # Er dette riktig dato og A0?
-               {'isotope':'56CO', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'},
-               {'isotope':'241AM', 'A0':3.929E4, 'ref_date':'01/01/2009 12:00:00'}       # Her og må vi fikse tall
+               {'isotope':'109CD', 'A0':3.774E4, 'ref_date':'03/01/2019 12:00:00'},      
+               {'isotope':'57CO', 'A0':4.3E4, 'ref_date':'11/01/2023 13:27:02'},          # her er den endra
+               {'isotope':'241AM', 'A0':3.752E4, 'ref_date':'03/01/2019 12:00:00'}       
                ]
     sources = pd.DataFrame(sources)
 
