@@ -47,19 +47,26 @@ for isotope in isotopes_list:
         dc.plot(title=f'Decay Plot for {foil_name} – {isotope}')
         # plt.show()
         
-        # Print decay constants
-        print(f"Decay constants (R) for {isotope}:")
-        print(dc.R)
-        # df_R = pd.DataFrame({'isotopes': [isotopes[0]], 'R': [R[0]], 'cov_R': [cov_R[0]]})
-        # df_A0 = pd.DataFrame({'isotopes': [isotopes[0]], 'A0': [A0[0]], 'cov_A': [cov_A0[0]]})
+        # Print decay constants (attempt fit_R(), fallback to attribute if present)
+        try:
+            isotopes_r, R_vals, cov_R = dc.fit_R()
+            print(f"Decay constants (R) for {isotope}: {R_vals}")
+        except Exception:
+            if hasattr(dc, "R"):
+                print(f"Decay constants (R) for {isotope}: {dc.R}")
+            else:
+                print(f"Decay constants (R) not available for {isotope}")
+
+        # Collect A0 and uncertainties
         if len(isotopes) > 1:
             for i in range(len(isotopes)):
                 sigma_A0 = np.sqrt(cov_A0[i])
                 data.append([isotopes[i], A0[i], cov_A0[i], sigma_A0])
-        else: 
+        else:
             sigma_A0 = np.sqrt(cov_A0[0])
             data.append([isotopes, A0, cov_A0, sigma_A0])
     else:
         print(f"No data for {isotope} in this foil.")
+
 df = pd.DataFrame(data, columns=['isotope', 'A0', 'cov A0', 'sigma_A0'])
 df.to_csv('Activity/Activity_data/Cu01_A0.csv')
