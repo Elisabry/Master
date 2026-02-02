@@ -95,3 +95,9 @@ df_out = pd.DataFrame(data, columns=['isotope', 'A0', 'cov A0', 'sigma_A0'])
 df_out.to_csv('Activity/Activity_data/Cu13_A0.csv', index=False)                    #ENDRE NAVNET HER!
 print("Saved A0 results to: Activity/Activity_data/Cu13_A0.csv")                    #ENDRE NAVNET HER!
 # ...existing code...
+
+
+# isotope: the nuclide (the fitted component) returned by the fit.
+# A0: the fitted initial activity for that isotope at End‑of‑Beam (EoB). Units are the activity units used by the curie.DecayChain/fit (check your curie settings; typically activity is in Bq or decays per time unit).
+# cov A0: the covariance (or variance) of the fitted A0 parameters — a matrix when multiple fit components were returned, or a single variance if only one component.
+# sigma_A0: the 1‑sigma uncertainty for A0 (square root of the relevant diagonal element of the covariance).

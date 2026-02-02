@@ -14,63 +14,6 @@ ad_degrader_h = 33.8
 ad_be_backing = 4.425  # 23.9130435 microns
 
 
-def stack_55(E_p, build=True):
-    stack = [
-        # compartment01
-        {'compound': 'Ni', 'name': 'Ni01', 'ad': 23.079},
-        {'compound': 'Sn', 'name': 'Sn01', 'ad': 37.475},
-        {'compound': 'Ta', 'name': 'Ta01', 'ad': 27.334},
-        {'compound': 'Cu', 'name': 'Cu01', 'ad': 21.906},
-        {'compound': 'Al', 'name': 'Al_degrader_A1', 'ad': ad_degrader_a},
-
-        # compartment02
-        {'compound': 'Ni', 'name': 'Ni02', 'ad': 23.091},
-        {'compound': 'Sn', 'name': 'Sn02', 'ad': 37.211},
-        {'compound': 'Ta', 'name': 'Ta02', 'ad': 27.396},
-        {'compound': 'Cu', 'name': 'Cu02', 'ad': 22.235},
-        {'compound': 'Al', 'name': 'Al_degrader_B2', 'ad': ad_degrader_b},
-
-        # compartment03
-        {'compound': 'Ni', 'name': 'Ni03', 'ad': 22.966},
-        {'compound': 'Sn', 'name': 'Sn03', 'ad': 37.130},
-        {'compound': 'Ta', 'name': 'Ta03', 'ad': 27.702},
-        {'compound': 'Cu', 'name': 'Cu03', 'ad': 22.253},
-        {'compound': 'Al', 'name': 'Al_degrader_C5', 'ad': ad_degrader_c},
-
-        # compartment04
-        {'compound': 'Ni', 'name': 'Ni04', 'ad': 22.982},
-        {'compound': 'Sn', 'name': 'Sn04', 'ad': 36.990},
-        {'compound': 'Ta', 'name': 'Ta04', 'ad': 27.518},
-        {'compound': 'Cu', 'name': 'Cu04', 'ad': 22.289},
-        {'compound': 'Al', 'name': 'Al_degrader_E8_E1', 'ad': 2 * ad_degrader_e},
-
-        # compartment05
-        {'compound': 'Ni', 'name': 'Ni05', 'ad': 22.942},
-        {'compound': 'Sn', 'name': 'Sn05', 'ad': 8.004},
-        {'compound': 'Ta', 'name': 'Ta05', 'ad': 27.197},
-        {'compound': 'Cu', 'name': 'Cu05', 'ad': 22.311},
-        {'compound': 'Al', 'name': 'Al_degrader_E4_E3_E2', 'ad': 3 * ad_degrader_e},
-
-        # compartment06
-        {'compound': 'Ni', 'name': 'Ni06', 'ad': 22.631},
-        {'compound': 'Sn', 'name': 'Sn06', 'ad': 7.816},
-        {'compound': 'Ta', 'name': 'Ta06', 'ad': 27.374},
-        {'compound': 'Cu', 'name': 'Cu06', 'ad': 22.233},
-        {'compound': 'Al', 'name': 'Al_degrader_E7_E6_E5', 'ad': 3 * ad_degrader_e},
-
-        # compartment07
-        {'compound': 'Ni', 'name': 'Ni07', 'ad': 22.529},
-        {'compound': 'Sn', 'name': 'Sn07', 'ad': 7.917},
-        {'compound': 'Ta', 'name': 'Ta07', 'ad': 27.539},
-        {'compound': 'Cu', 'name': 'Cu07', 'ad': 22.258},
-    ]
-    if build:
-        full_stack = ci.Stack(stack, E0=E_p, particle='p', dE0=0.55, N=1E6, max_steps=100)
-        return full_stack
-    else:
-        return stack
-
-
 def stack_30(E_p, build=True):
     stack = [
         # compartment08
@@ -128,33 +71,25 @@ def stack_30(E_p, build=True):
         return stack
 
 
-#dp_array = np.array([1,1,1]) 
-#dp_array = np.arange(0.8, 1.21, 0.01) 
-# dp_array2 = np.arange(0.97, 0.99, 0.001) 
-# dp_array1 = np.arange(0.99, 1.001, 0.001) 
-# dp_array2 = np.arange(0.94, 0.96, 0.001) 
-# dp_array = np.union1d(dp_array1, dp_array2)
 
 
+dp_array = np.arange(0.8, 1.21, 0.01)
+dp_array_length = len(dp_array)
+index = 0
 
-
-# dp_array = np.arange(0.8, 1.21, 0.01)
-# dp_array_length = len(dp_array)
-# index = 0
-
-# for dp in dp_array:
-#     index += 1
-#     print('__________________________________________')
-#     print(f'Running stack calculation for dp = {dp:.2f}')
+for dp in dp_array:
+    index += 1
+    print('__________________________________________')
+    print(f'Running stack calculation for dp = {dp:.2f}')
     
-#     st = ci.Stack(stack_30(30, build=False), E0=30, dE0=0.55, N=1e6, particle='p', dp=dp)
-#     st.saveas(f'stack_30MeV_dp_{dp:.2f}.csv')
+    st = ci.Stack(stack_30(30, build=False), E0=30, dE0=0.55, N=1e6, particle='p', dp=dp)
+    st.saveas(f'stack_30MeV_dp_{dp:.2f}.csv')
     
-#     percent_done = index/dp_array_length*100
-#     print(f'{percent_done:.2f}% of the calculation is done')
-#     print('__________________________________________\n')
+    percent_done = index/dp_array_length*100
+    print(f'{percent_done:.2f}% of the calculation is done')
+    print('__________________________________________\n')
 
 
 
-st = ci.Stack(stack_30(30, build=False), E0=30, dE0=0.55, N=1e5, particle='p', dp=1) # satt dp=dp til 1.
-st.plot(filter_name="Ta*") 
+# st = ci.Stack(stack_30(30, build=False), E0=30, dE0=0.55, N=1e5, particle='p', dp=1) # satt dp=dp til 1.
+# st.plot(filter_name="Cu*") 
