@@ -68,9 +68,6 @@ def flux_weighted_cross_section(dp, target, mon_reaction, stack='30MeV'):
 
 
 
-
-
-
 E, xs, xs_unc = flux_weighted_cross_section(1.02, 'Cu08', 'cup63znt')
 E, xs, xs_unc = flux_weighted_cross_section(0.94, 'Cu01', 'cup63znt', stack='55MeV')
 print(f'xs = {xs} +- {xs_unc} mb')

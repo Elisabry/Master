@@ -4,21 +4,31 @@ import numpy as np
 import matplotlib.pyplot as plt
 import csv
 import os
-                            # DENNE ER IKKE FERDIG! MÅ BYTTE ALLE CU TIL TA
+                            
 # --- User input ---
 spectra_files = [
-    'Spectroscopy/_peak_summary/AF09232025_Cu13_52cm_IDM_peak_summary.csv',
-    'Spectroscopy/Cu_peak_summary/AM09232025_Cu13_40cm_IDM_peak_summary.csv',
-    'Spectroscopy/Cu_peak_summary/BJ09242025_Cu13_10cm_IDM_peak_summary.csv',
-    'Spectroscopy/Cu_peak_summary/DR09252025_Cu13_10cm_IDM_peak_summary.csv',
-    'Spectroscopy/Cu_peak_summary/EU09272025_Cu13_10cm_IDM_peak_summary.csv',
-    'Spectroscopy/Cu_peak_summary/GK10152025_IDM_Cu13_10cm_jobs_peak_summary.csv'
-]                      #ENDRE FILNAVNENE HER!
+    'Spectroscopy/Ta_peak_summary/BW09242025_Ta01_40cm_LEPS_peak_summary.csv',
+    'Spectroscopy/Ta_peak_summary/CD09242025_Ta01_80cm_DET2_peak_summary.csv',
+    'Spectroscopy/Ta_peak_summary/CK09242025_Ta01_30cm_LEPS_peak_summary.csv',
+    'Spectroscopy/Ta_peak_summary/CR09242025_Ta01_80cm_DET2_peak_summary.csv',
+    'Spectroscopy/Ta_peak_summary/CY09252025_Ta01_20cm_LEPS_peak_summary.csv',
+    'Spectroscopy/Ta_peak_summary/DF09252025_Ta01_70cm_DET2_peak_summary.csv',
+    'Spectroscopy/Ta_peak_summary/DM09252025_Ta01_50cm_DET2_peak_summary.csv',
+    'Spectroscopy/Ta_peak_summary/DT09252025_Ta01_10cm_LEPS_peak_summary.csv',
+    'Spectroscopy/Ta_peak_summary/EI09262025_Ta01_10cm_LEPS_peak_summary.csv',
+    'Spectroscopy/Ta_peak_summary/ER09262025_Ta01_15cm_DET2_peak_summary.csv',
+    'Spectroscopy/Ta_peak_summary/FP09302025_Ta01_10cm_jobs_peak_summary.csv',
+    'Spectroscopy/Ta_peak_summary/HA11042025_IDM_Ta01_10cm_peak_summary.csv'
+]                      
 
-isotopes_list = ['62ZN', '63ZN', '65ZN', '56CO', '58CO']
+isotopes_list = [
+        "40K",
+        "177W", "178W", "181W", 
+        "175TA", "176TA", "177TA", "178TA", "180TA", 
+        "173HF", "175HF"]
 
-foil_name = 'Cu13'                                               #ENDRE NAVNET HER!
-EoB_time = '09/23/2025 18:35:00'  # End of beam
+foil_name = 'Ta01'                                               #ENDRE NAVNET HER!
+EoB_time = '09/24/2025 15:43:00'  # End of beam
 
 # --- Read and combine CSV files ---
 df_list = [pd.read_csv(f) for f in spectra_files]
@@ -92,8 +102,8 @@ for isotope in isotopes_list:
         data.append([iso, a0_val, cov_val, sigma])
 
 df_out = pd.DataFrame(data, columns=['isotope', 'A0', 'cov A0', 'sigma_A0'])
-df_out.to_csv('Activity/Activity_data/Cu13_A0.csv', index=False)                    #ENDRE NAVNET HER!
-print("Saved A0 results to: Activity/Activity_data/Cu13_A0.csv")                    #ENDRE NAVNET HER!
+df_out.to_csv('Activity/Activity_data/Ta01_A0.csv', index=False)                    #ENDRE NAVNET HER!
+print("Saved A0 results to: Activity/Activity_data/Ta01_A0.csv")                    #ENDRE NAVNET HER!
 # ...existing code...
 
 

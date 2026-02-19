@@ -77,19 +77,19 @@ dp_array = np.arange(0.8, 1.21, 0.01)
 dp_array_length = len(dp_array)
 index = 0
 
-for dp in dp_array:
-    index += 1
-    print('__________________________________________')
-    print(f'Running stack calculation for dp = {dp:.2f}')
+# for dp in dp_array:
+#     index += 1
+#     print('__________________________________________')
+#     print(f'Running stack calculation for dp = {dp:.2f}')
     
-    st = ci.Stack(stack_30(30, build=False), E0=30, dE0=0.55, N=1e6, particle='p', dp=dp)
-    st.saveas(f'stack_30MeV_dp_{dp:.2f}.csv')
+#     st = ci.Stack(stack_30(30, build=False), E0=30, dE0=0.55, N=1e6, particle='p', dp=dp)
+#     st.saveas(f'stack_30MeV_dp_{dp:.2f}.csv')
     
-    percent_done = index/dp_array_length*100
-    print(f'{percent_done:.2f}% of the calculation is done')
-    print('__________________________________________\n')
+#     percent_done = index/dp_array_length*100
+#     print(f'{percent_done:.2f}% of the calculation is done')
+#     print('__________________________________________\n')
 
 
 
-# st = ci.Stack(stack_30(30, build=False), E0=30, dE0=0.55, N=1e5, particle='p', dp=1) # satt dp=dp til 1.
-# st.plot(filter_name="Cu*") 
+st = ci.Stack(stack_30(30, build=False), E0=30, dE0=0.55, N=1e6, particle='p', dp=1) # satt dp=dp til 1.
+st.plot(filter_name="Ta*") 
