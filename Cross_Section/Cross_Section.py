@@ -75,6 +75,7 @@ def get_A0(element, isotope):
         path = os.getcwd() + '/../'
         df = pd.read_csv(path + file)
         df_isotope = df[df['isotope'].isin([isotope, isotope + 'g'])]
+        print(df)
         if df_isotope.empty:
             A0_total[i] = 0
             unc_A0_total[i] = 0
@@ -140,4 +141,11 @@ def calculate_cross_section(element, isotope):
     xs *= 1e27          # converting the cross section from cm^2 to mb.
     unc_xs *= 1e27      # converting the uncertainty of the cross section from
     energy, unc_left, unc_right = get_energy(element) # getting the energy for the element, this will be used to plot the cross section as a function of energy. The uncertainties will be used to plot error bars.    
+    mask = xs > 0
+    energy = energy[mask]
+    xs = xs[mask]
+    unc_xs = unc_xs[mask]
+    unc_left = unc_left[mask]
+    unc_right = unc_right[mask]
+    
     plt.errorbar(energy, xs, xerr=[unc_left,unc_right], yerr=unc_xs, marker='o', label='This work', ls='none')  # plotting the cross section with error bars.

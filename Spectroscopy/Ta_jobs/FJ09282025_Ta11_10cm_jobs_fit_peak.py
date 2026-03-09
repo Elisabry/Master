@@ -25,16 +25,17 @@ for i, spec in enumerate(list_of_spectra[1:], start=1):
     summed_spectra += spec
 
 sp.isotopes = [
-        "40K",
-        "177W", "178W", "181W", 
-        "175TA", "176TA", "177TA", "178TA", "180TA", 
-        "173HF", "175HF"]
+    '177Wg','178W','179Wg','179Wm','181Wg',
+    '173TAg','174TAg','175TAg','176TAg','177TAg','178TAg','180TAg',
+    '172HFg','173HFg','175HFg','180HFm','172LUm','176LUm','178LUg','179LUg'
+    ]
+
 
 summed_spectra.isotopes = [
-        "40K",
-        "177W", "178W", "181W", 
-        "175TA", "176TA", "177TA", "178TA", "180TA", 
-        "173HF", "175HF"]
+    '177Wg','178W','179Wg','179Wm','181Wg',
+    '173TAg','174TAg','175TAg','176TAg','177TAg','178TAg','180TAg',
+    '172HFg','173HFg','175HFg','180HFm','172LUm','176LUm','178LUg','179LUg'
+    ]
 
 
 
