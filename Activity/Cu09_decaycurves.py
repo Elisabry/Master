@@ -14,7 +14,13 @@ spectra_files = [
     'Spectroscopy/Cu_peak_summary/DV09252025_Cu09_10cm_IDM_peak_summary.csv'
 ]
 
-isotopes_list = ['62ZN', '63ZN', '65ZN', '56CO', '58CO']
+isotopes_list = [
+    '59CUg','60CUg','61CUg','62CUg','64CUg',
+    '60ZNg','61ZNg','62ZNg','63ZNg','65ZNg',
+    '55COg','56COg','57COg','58COg','58COm1','60COg','60COm1','61COg','62COg','62COm1',
+    '53FEg','55FEg','59FEg','61FEg',
+    '54MNg','56MNg',
+    '56NIg','57NIg']
 
 foil_name = 'Cu09'
 EoB_time = '09/23/2025 18:35:00'  # End of beam

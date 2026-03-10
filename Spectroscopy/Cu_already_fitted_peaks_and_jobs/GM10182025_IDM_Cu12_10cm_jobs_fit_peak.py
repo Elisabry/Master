@@ -31,18 +31,20 @@ for i, spec in enumerate(list_of_spectra[1:], start=1):
     summed_spectra += spec
 
 sp.isotopes = [
-    "60ZN", "62ZN", "63ZN", "64ZN", "65ZN",
-    "59CU", "61CU", "62CU", "64CU", 
-    "56NI", "57NI",
-    "56CO", "58CO", 
-]
+    '59CUg','60CUg','61CUg','62CUg','64CUg',
+    '60ZNg','61ZNg','62ZNg','63ZNg','65ZNg',
+    '55COg','56COg','57COg','58COg','58COm1','60COg','60COm1','61COg','62COg','62COm1',
+    '53FEg','55FEg','59FEg','61FEg',
+    '54MNg','56MNg',
+    '56NIg','57NIg']
 
 summed_spectra.isotopes = [
-    "60ZN", "62ZN", "63ZN", "64ZN", "65ZN",
-    "59CU", "61CU", "62CU", "64CU", 
-    "56NI", "57NI",
-    "56CO", "58CO", 
-]
+    '59CUg','60CUg','61CUg','62CUg','64CUg',
+    '60ZNg','61ZNg','62ZNg','63ZNg','65ZNg',
+    '55COg','56COg','57COg','58COg','58COm1','60COg','60COm1','61COg','62COg','62COm1',
+    '53FEg','55FEg','59FEg','61FEg',
+    '54MNg','56MNg',
+    '56NIg','57NIg']
 
 #print(type(sp))
 print(type(summed_spectra))

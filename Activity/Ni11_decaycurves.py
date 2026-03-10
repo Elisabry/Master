@@ -11,7 +11,14 @@ spectra_files = [
     'Spectroscopy/Ni_peak_summary/GI10092025_Det2_Ni11_10cm_jobs_peak_summary.csv',
 ]
 
-isotopes_list = ['57NI']
+isotopes_list = [
+    '59CUg','60CUg','61CUg','62CUg','64CUg',
+    '54COm1','55COg','56COg','57COg','58COg','58COm','58COm1','60COg','60COm','60COm1','61COg','62COg','62COm1',
+    '53FEg','53FEm1','55FEg','59FEg','61FEg',
+    '50MNm1','51MNg','52MNg','52MNm','52MNm1','54MNg','56MNg',
+    '49CRg','51CRg','55CRg',
+    '47Vg',
+    '56NIg','57NIg']
 
 foil_name = 'Ni11'
 EoB_time = '09/23/2025 18:35:00'  # End of beam

@@ -9,25 +9,14 @@ cb = ci.Calibration("Calibration/calibration_IDM_30cm.json")
 sp = ci.Spectrum('Data/IDM/DG09252025_Cu07_30cm_IDM.Spe')
 sp.cb = cb
 sp.isotopes = [
-    "60ZN", "62ZN", "63ZN", "65ZN", "69ZN", "71ZN", "72ZN",
-    "60CU", "61CU", "62CU", "64CU", "66CU", "67CU",
-    "56NI", "57NI", "65NI", "66NI",
-    "55CO", "56CO", "57CO", "58CO", "60CO", "61CO",
-    "40K", "41K", "42K", "43K", "44K",
-    "52FE", "53FE", "55FE", "59FE", "61FE",
-    "48CR", "49CR", "51CR", "55CR", "56CR",
-    "45CA", "47CA", "49CA",
-    "44SC", "46SC", "47SC", "48SC", 
-    "51MN", "52MN", "54MN", "56MN",
-    "64GA", "65GA", "66GA", "67GA", "68GA", "70GA",
-    "68GE", "69GE", "71GE",
-    "69AS","70AS", "71AS", 
-    "41AR", "42AR", "43AR", 
-    "38CL", "39CL", "40CL",
-    "37S", "38S"
-]
+    '59CUg','60CUg','61CUg','62CUg','64CUg',
+    '60ZNg','61ZNg','62ZNg','63ZNg','65ZNg',
+    '55COg','56COg','57COg','58COg','58COm1','60COg','60COm1','61COg','62COg','62COm1',
+    '53FEg','55FEg','59FEg','61FEg',
+    '54MNg','56MNg',
+    '56NIg','57NIg']
 sp.plot()
 
-sp.saveas("Spectroscopy/peak_summary/DG09252025_Cu07_30cm_IDM_peak_summary.csv")
+sp.saveas("Spectroscopy/Cu_peak_summary/DG09252025_Cu07_30cm_IDM_peak_summary.csv")
 #sp.saveas('filnavn!.png') 
 #sp.summarize()

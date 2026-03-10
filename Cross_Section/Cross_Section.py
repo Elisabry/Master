@@ -75,7 +75,7 @@ def get_A0(element, isotope):
         path = os.getcwd() + '/../'
         df = pd.read_csv(path + file)
         df_isotope = df[df['isotope'].isin([isotope, isotope + 'g'])]
-        print(df)
+        print(df_isotope)
         if df_isotope.empty:
             A0_total[i] = 0
             unc_A0_total[i] = 0
@@ -90,7 +90,7 @@ def get_A0_files(element):
     elif element == 'Ni':
         files = ['./Activity/Activity_data/Ni01_A0.csv', './Activity/Activity_data/Ni02_A0.csv', './Activity/Activity_data/Ni03_A0.csv', './Activity/Activity_data/Ni04_A0.csv', './Activity/Activity_data/Ni05_A0.csv', './Activity/Activity_data/Ni06_A0.csv', './Activity/Activity_data/Ni07_A0.csv', './Activity/Activity_data/Ni08_A0.csv', './Activity/Activity_data/Ni09_A0.csv', './Activity/Activity_data/Ni10_A0.csv', './Activity/Activity_data/Ni11_A0.csv', './Activity/Activity_data/Ni12_A0.csv', './Activity/Activity_data/Ni13_A0.csv', './Activity/Activity_data/Ni14_A0.csv']
     elif element == 'Ta':
-        files = ['./Activity/Activity_data/Ta01_A0.csv', './Activity/Activity_data/Ta02_A0.csv', './Activity/Activity_data/Ta03_A0.csv', './Activity/Activity_data/Ta04_A0.csv']
+        files = ['./Activity/Activity_data/Ta01_A0.csv', './Activity/Activity_data/Ta02_A0.csv', './Activity/Activity_data/Ta03_A0.csv', './Activity/Activity_data/Ta04_A0.csv', './Activity/Activity_data/Ta05_A0.csv', './Activity/Activity_data/Ta06_A0.csv', './Activity/Activity_data/Ta07_A0.csv', './Activity/Activity_data/Ta08_A0.csv', './Activity/Activity_data/Ta09_A0.csv', './Activity/Activity_data/Ta10_A0.csv', './Activity/Activity_data/Ta11_A0.csv', './Activity/Activity_data/Ta12_A0.csv', './Activity/Activity_data/Ta13_A0.csv', './Activity/Activity_data/Ta14_A0.csv']
     else:
         raise ValueError('Element not recognized. Please use Cu, Ni, or Ta.')
     return files

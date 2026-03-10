@@ -153,9 +153,13 @@ def ni_57NI_monitor():
 
 
 
+
+
+
+
 # ------------ Ta isotopes ------------
 
-def ta_177W_independet():
+def ta_177W_independet():             # noen av this work sporer av, falske peaker?
     element='Ta'; isotope='177W'; 
     Z = '74'; A = '177'
     maxE = 60; maxXs = 800
@@ -175,7 +179,7 @@ def ta_177W_independet():
 #ta_177W_independet()
 
     
-def ta_178W_independent():
+def ta_178W_independent():                 # denne har kun x-ray. det er noen av this work som sporer av falske peaker?
     element='Ta'; isotope='178W';
     Z = '74'; A = '178'
     maxE = 60; maxXs = 850
@@ -186,7 +190,7 @@ def ta_178W_independent():
     plt.xlim(0,maxE) 
     plt.ylim(0, maxXs)
     set_title(element, isotope, independent=True)
-    # plt.legend(fontsize='5')    
+    # plt.legend(fontsize='5')                           
     set_legend(fontsize='5')
     name = element+'_'+isotope+'_ind.pdf'
     plt.savefig(path_to_cross_section_figures + name)
@@ -196,10 +200,53 @@ def ta_178W_independent():
 #ta_178W_independent()  
 
 
-def ta_181W_independent():
+
+def ta_179Wg_independent():                # denne kjører ikke
+    element='Ta'; isotope='179Wg';
+    Z = '74'; A = '179'
+    maxE = 60; maxXs = 850
+    #exfor.plotExforDataFromFilename('Ta_179Wg_ind.txt')  #  INGEN EXFOR DATA TLGJENGELIG!
+    calculate_cross_section(element, isotope)
+    talys.plotTalys(productZ=Z, productA=A, targetFoil=element)
+    tendl_ta.plotTendl23Unique(productZ=Z, productA=A, color='hotpink')
+    plt.xlim(0,maxE) 
+    plt.ylim(0, maxXs)
+    set_title(element, isotope, independent=True)
+    # plt.legend(fontsize='5')                           
+    set_legend(fontsize='5')
+    name = element+'_'+isotope+'_ind.pdf'
+    plt.savefig(path_to_cross_section_figures + name)
+    plt.show()
+    plt.show()
+
+#ta_179Wg_independent()  
+
+
+def ta_179Wm1_independent():                      # Denne kjører, men this work er off
+    element='Ta'; isotope='179Wm1';
+    Z = '74'; A = '179'
+    maxE = 60; maxXs = 5000
+    # exfor.plotExforDataFromFilename('Ta_179Wm1_ind.txt')  # INGEN EXFOR DATA TLGJENGELIG!
+    calculate_cross_section(element, isotope)
+    talys.plotTalys(productZ=Z, productA=A, targetFoil=element)
+    tendl_ta.plotTendl23Unique(productZ=Z, productA=A, color='hotpink')
+    plt.xlim(0,maxE) 
+    plt.ylim(0, maxXs)
+    set_title(element, isotope, independent=True)
+    # plt.legend(fontsize='5')                           
+    set_legend(fontsize='5')
+    name = element+'_'+isotope+'_ind.pdf'
+    plt.savefig(path_to_cross_section_figures + name)
+    plt.show()
+
+#ta_179Wm1_independent()
+ 
+
+
+def ta_181W_independent():         # this work er off
     element='Ta'; isotope='181W';
     Z = '74'; A = '181'
-    maxE = 60; maxXs = 800
+    maxE = 60; maxXs = 200
     #exfor.plotExforDataFromFilename('Ta_177W_ind.txt')  # Det finnes ingen EXFOR data for Ta-181W.
     calculate_cross_section(element, isotope)
     talys.plotTalys(productZ=Z, productA=A, targetFoil=element)
@@ -220,7 +267,7 @@ def ta_175TA_independent():
     element='Ta'; isotope='175TA';
     Z = '73'; A = '175'
     maxE = 100; maxXs = 80
-    exfor.plotExforDataFromFilename('Ta_175TA_ind.txt')  # plotting the EXFOR data for comparison.
+    exfor.plotExforDataFromFilename('Ta_175TA_ind.txt')  # det står at den er cumulative i EXFOR
     calculate_cross_section(element, isotope)
     talys.plotTalys(productZ=Z, productA=A, targetFoil=element)
     tendl_ta.plotTendl23Unique(productZ=Z, productA=A, color='hotpink')
@@ -233,7 +280,7 @@ def ta_175TA_independent():
     plt.savefig(path_to_cross_section_figures + name)
     plt.show()
 
-#ta_175TA_independent()  
+ta_175TA_independent()  
 
 
 def ta_176TA_independent():           # maybe this is cumulative?
@@ -319,6 +366,7 @@ def ta_178TA_cumulative():     # maybe this is independent? since there is no 17
 #ta_178TA_cumulative() 
 
 
+
 def ta_180TA_independent():
     element='Ta'; isotope='180TA';
     Z = '73'; A = '180'
@@ -337,6 +385,39 @@ def ta_180TA_independent():
     plt.show()
 
 #ta_180TA_independent() 
+
+
+
+def ta_172HFg_cumulative():
+    element='Ta'; isotope='172HFg';
+    Z = '72'; A = '172'
+    maxE = 200; maxXs = 500    
+    betaplus_decay_chain = {'isotope': ['73', 1.0, None]} 
+    # {isotope: [productZ, branchingRatio isomerLevel]} #beta+/beta- for tendl feedomg
+    # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
+    #exfor.plotExforDataFromFilename('Ta_178TA_cumu.txt')  # plotting the EXFOR data for comparison.
+    calculate_cross_section(element, isotope) 
+    #exfor.plotExforDataFromFilename('Ta_172HFg_cumu.txt')
+    talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
+                    isomerLevel = None,
+                    betaFeeding = 'beta+', # only beta+ beta-
+                    branchingRatio = 1.0,
+                    parentIsomerLevel = None)
+    tendl_ta.plotTendl23Unique(productZ=Z, productA=A, color='hotpink')
+    tendl_ta.plotTendl23Unique_feeding(productZ=Z, productA=A, isomerLevel = None,  
+                                  betaPlusDecayChain = betaplus_decay_chain, betaMinusDecayChain = None, isomerDecayChain = None, 
+                                  color=None, lineStyle=None)
+    plt.xlim(0,maxE) 
+    plt.ylim(0, maxXs)
+    set_title(element, isotope, independent=True)
+    # plt.legend(fontsize='5')    
+    set_legend(fontsize='5')
+    name = element+'_'+isotope+'_cumu.pdf'
+    plt.savefig(path_to_cross_section_figures + name)
+    plt.show()
+
+#ta_172HFg_cumulative() 
+
 
 
 def ta_173HF_cumulative():
@@ -399,6 +480,44 @@ def ta_175HF_cumulative():
     plt.show()
 
 #ta_175HF_cumulative() 
+
+
+def ta_180HFm1_cumulative():
+    element='Ta'; isotope='180HFm1';
+    Z = '72'; A = '180'
+    maxE = 60; maxXs = 40     # Hvorfor er usikkerheten så sykt høy??!
+    betaplus_decay_chain = {'isotope': ['73', 1.0, None]} 
+    # {isotope: [productZ, branchingRatio isomerLevel]} #beta+/beta- for tendl feedomg
+    # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
+    #exfor.plotExforDataFromFilename('Ta_178TA_cumu.txt')  # plotting the EXFOR data for comparison.
+    calculate_cross_section(element, isotope) 
+    #exfor.plotExforDataFromFilename('Ta_180HFm_cumu.txt')
+    talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
+                    isomerLevel = None,
+                    betaFeeding = 'beta+', # only beta+ beta-
+                    branchingRatio = 1.0,
+                    parentIsomerLevel = None)
+    tendl_ta.plotTendl23Unique(productZ=Z, productA=A, color='hotpink')
+    tendl_ta.plotTendl23Unique_feeding(productZ=Z, productA=A, isomerLevel = None,  
+                                  betaPlusDecayChain = betaplus_decay_chain, betaMinusDecayChain = None, isomerDecayChain = None, 
+                                  color=None, lineStyle=None)
+    plt.xlim(0,maxE) 
+    plt.ylim(0, maxXs)
+    set_title(element, isotope, independent=True)
+    # plt.legend(fontsize='5')    
+    set_legend(fontsize='5')
+    name = element+'_'+isotope+'_cumu.pdf'
+    plt.savefig(path_to_cross_section_figures + name)
+    plt.show()
+
+#ta_180HFm1_cumulative() 
+
+
+
+#     '173TAg','174TAg'
+#     '172HFg'
+#     '172LUm','176LUm','178LUg','179LUg'
+
 
 
 
@@ -586,6 +705,21 @@ def ni_58CO_independent():
 
 
 
+# isotopes_list = [
+#     '59CUg','60CUg','61CUg','62CUg','64CUg',
+#     '54COm1','55COg','56COg','57COg','58COg','58COm','58COm1','60COg','60COm','60COm1','61COg','62COg','62COm1',
+#     '53FEg','53FEm1','55FEg','59FEg','61FEg',
+#     '50MNm1','51MNg','52MNg','52MNm','52MNm1','54MNg','56MNg',
+#     '49CRg','51CRg','55CRg',
+#     '47Vg',
+#     '56NIg','57NIg']
+
+
+
+
+
+
+
 
 
 
@@ -696,3 +830,14 @@ def cu_57NI_independent():
     plt.show()
 
 #cu_57NI_independent() 
+
+
+
+
+# isotopes_list = [
+#     '59CUg','60CUg','61CUg','62CUg','64CUg',
+#     '60ZNg','61ZNg','62ZNg','63ZNg','65ZNg',
+#     '55COg','56COg','57COg','58COg','58COm1','60COg','60COm1','61COg','62COg','62COm1',
+#     '53FEg','55FEg','59FEg','61FEg',
+#     '54MNg','56MNg',
+#     '56NIg','57NIg']

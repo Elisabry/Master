@@ -23,10 +23,10 @@ spectra_files = [
 ]                      
 
 isotopes_list = [
-        "40K",
-        "177W", "178W", "181W", 
-        "175TA", "176TA", "177TA", "178TA", "180TA", 
-        "173HF", "175HF"]
+    '177Wg','178W','179Wg','179Wm','181Wg',
+    '173TAg','174TAg','175TAg','176TAg','177TAg','178TAg','180TAg',
+    '172HFg','173HFg','175HFg','180HFm','172LUm','176LUm','178LUg','179LUg'
+    ]
 
 foil_name = 'Ta02'                                               #ENDRE NAVNET HER!
 EoB_time = '09/24/2025 15:43:00'  # End of beam
