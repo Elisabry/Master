@@ -4,7 +4,7 @@ import pandas as pd
 
 ta_isotopes = [
     '177Wg','178W','179Wg','179Wm','181Wg',
-    '173TAg','174TAg','175TAg','176TAg','177TAg','178TAg','180TAg',
+    '172TAg','173TAg','174TAg','175TAg','176TAg','177TAg','178TAg','180TAg',
     '172HFg','173HFg','175HFg','180HFm','172LUm','176LUm','178LUg','179LUg'
     ]
 
@@ -20,12 +20,13 @@ def fit_peak(calibration_file, spectrum_file, peak_data_filename, isotopes):
     sp = ci.Spectrum(spectrum_file)
     sp.cb = cb
     sp.isotopes = isotopes
-    sp.fit_config = {'xrays': True, 'E_min':20}
-    # sp.plot()
-    sp.saveas(peak_data_filename)
 
-    df = pd.read_csv(peak_data_filename)
-    print(df['filename'].values)
+    # sp.fit_config = {'xrays': True, 'E_min':20}
+    sp.plot()
+    # sp.saveas(peak_data_filename)
+
+    # df = pd.read_csv(peak_data_filename)
+    # print(df['filename'].values)
 
 
 # fit_peak("Calibration/calibration_DET2_80cm.json", 'Data/DET2/AB09232025_Ta09_80cm_DET2.Spe', "Spectroscopy/Ta_peak_summary/AB09232025_Ta09_80cm_DET2_peak_summary.csv", ta_isotopes)   # ['63ZN']
@@ -144,23 +145,23 @@ fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/CU09252025_Ta05_10
 fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/CW09252025_Ta03_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/CW09252025_Ta03_10cm_LEPS_peak_summary.csv", ta_isotopes)
 fit_peak("Calibration/calibration_LEPS_20cm.json", 'Data/LEPS/CY09252025_Ta01_20cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/CY09252025_Ta01_20cm_LEPS_peak_summary.csv", ta_isotopes)
 fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DA09252025_Ta06_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DA09252025_Ta06_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_09cm.json", 'Data/LEPS/DC09252025_Ta04_9cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DC09252025_Ta04_9cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DD09252025_Ta04_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DD09252025_Ta04_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DF09252025_Ta02_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DF09252025_Ta02_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DH09252025_Ta07_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DH09252025_Ta07_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DJ09252025_Ta05_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DJ09252025_Ta05_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DL09252025_Ta03_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DL09252025_Ta03_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DT09252025_Ta01_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DT09252025_Ta01_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DV09252025_Ta13_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DV09252025_Ta13_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DX09252025_Ta11_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DX09252025_Ta11_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DZ09252025_Ta09_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DZ09252025_Ta09_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EB09252025_Ta07_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EB09252025_Ta07_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/ED09262025_Ta05_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/ED09262025_Ta05_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EG09262025_Ta03_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EG09262025_Ta03_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EI09262025_Ta01_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EI09262025_Ta01_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EM09262025_Ta02_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EM09262025_Ta02_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EO09262025_Ta04_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EO09262025_Ta04_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EP09262025_Ta10_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EP09262025_Ta10_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/ER09272025_Ta06_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/ER09272025_Ta06_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EU09272025_Ta04_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EU09272025_Ta04_10cm_LEPS_peak_summary.csv", ta_isotopes)
-fit_peak("Calibration/calibration_LEPS_40cm.json", 'Data/LEPS/AA09232025_Ta08_60cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/AA09232025_Ta08_60cm_LEPS_peak_summary.csv", ta_isotopes)   # har kun 40 cm, ikke 60cm. 
+# fit_peak("Calibration/calibration_LEPS_09cm.json", 'Data/LEPS/DC09252025_Ta04_9cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DC09252025_Ta04_9cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DD09252025_Ta04_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DD09252025_Ta04_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DF09252025_Ta02_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DF09252025_Ta02_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DH09252025_Ta07_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DH09252025_Ta07_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DJ09252025_Ta05_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DJ09252025_Ta05_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DL09252025_Ta03_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DL09252025_Ta03_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DT09252025_Ta01_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DT09252025_Ta01_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DV09252025_Ta13_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DV09252025_Ta13_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DX09252025_Ta11_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DX09252025_Ta11_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/DZ09252025_Ta09_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/DZ09252025_Ta09_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EB09252025_Ta07_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EB09252025_Ta07_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/ED09262025_Ta05_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/ED09262025_Ta05_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EG09262025_Ta03_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EG09262025_Ta03_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EI09262025_Ta01_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EI09262025_Ta01_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EM09262025_Ta02_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EM09262025_Ta02_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EO09262025_Ta04_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EO09262025_Ta04_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EP09262025_Ta10_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EP09262025_Ta10_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/ER09272025_Ta06_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/ER09272025_Ta06_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_10cm.json", 'Data/LEPS/EU09272025_Ta04_10cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/EU09272025_Ta04_10cm_LEPS_peak_summary.csv", ta_isotopes)
+# fit_peak("Calibration/calibration_LEPS_40cm.json", 'Data/LEPS/AA09232025_Ta08_60cm_LEPS.Spe', "Spectroscopy/Ta_peak_summary/AA09232025_Ta08_60cm_LEPS_peak_summary.csv", ta_isotopes)   # har kun 40 cm, ikke 60cm. 

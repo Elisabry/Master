@@ -21,7 +21,7 @@ def fit_peak(calibration_file, spectrum_file, peak_data_filename, isotopes):
     sp = ci.Spectrum(spectrum_file)
     sp.cb = cb
     sp.isotopes = isotopes
-    sp.fit_config = {'xrays': True, 'E_min':20}
+    #sp.fit_config = {'xrays': True, 'E_min':20} har kjørt på nytt uten x-rays.
     #sp.plot()
     sp.saveas(peak_data_filename)
 

@@ -28,7 +28,7 @@ spectra_files = [
 #         "173HF", "175HF"]
 
 isotopes_list = [
-    '177Wg','178W','179Wg','179Wm','181Wg',
+    '177Wg','178W','179W','179Wm','181Wg',
     '173TAg','174TAg','175TAg','176TAg','177TAg','178TAg','180TAg',
     '172HFg','173HFg','175HFg','180HFm','172LUm','176LUm','178LUg','179LUg'
     ]

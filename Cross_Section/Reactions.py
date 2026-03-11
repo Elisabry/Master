@@ -176,7 +176,7 @@ def ta_177W_independet():             # noen av this work sporer av, falske peak
     plt.savefig(path_to_cross_section_figures + name)
     plt.show()
 
-#ta_177W_independet()
+# ta_177W_independet()
 
     
 def ta_178W_independent():                 # denne har kun x-ray. det er noen av this work som sporer av falske peaker?
@@ -219,7 +219,7 @@ def ta_179Wg_independent():                # denne kjører ikke
     plt.show()
     plt.show()
 
-#ta_179Wg_independent()  
+ta_179Wg_independent()  
 
 
 def ta_179Wm1_independent():                      # Denne kjører, men this work er off
@@ -263,10 +263,70 @@ def ta_181W_independent():         # this work er off
 #ta_181W_independent()  
 
 
-def ta_175TA_independent():
+def ta_173TA_cumulative():   #  her er det ikke noe.....
+    element='Ta'; isotope='173TA';
+    Z = '73'; A = '173'
+    maxE = 60; maxXs = 800
+    betaplus_decay_chain = {'isotope': ['74', 1.0, None]} 
+    # {isotope: [productZ, branchingRatio isomerLevel]} #beta+/beta- for tendl feedomg
+    # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
+    calculate_cross_section(element, isotope) 
+    #exfor.plotExforDataFromFilename('Ta_177TA_cumu.txt', setLegend=False, maxE=maxE)    finnes ikke data!
+    talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
+                    isomerLevel = None,
+                    betaFeeding = 'beta+', # only beta+ beta-
+                    branchingRatio = 1.0,
+                    parentIsomerLevel = None)
+    tendl_ta.plotTendl23Unique(productZ=Z, productA=A, color='hotpink')
+    tendl_ta.plotTendl23Unique_feeding(productZ=Z, productA=A, isomerLevel = None,  
+                                  betaPlusDecayChain = betaplus_decay_chain, betaMinusDecayChain = None, isomerDecayChain = None, 
+                                  color=None, lineStyle=None)
+    plt.xlim(0,maxE) 
+    plt.ylim(0, maxXs)
+    set_title(element, isotope, independent=True)
+    # plt.legend(fontsize='5')    
+    set_legend(fontsize='5')
+    name = element+'_'+isotope+'_cumu.pdf'
+    plt.savefig(path_to_cross_section_figures + name)
+    plt.show()
+
+#ta_173TA_cumulative() 
+
+
+def ta_174TA_cumulative():   #  ett punkt på nesten 0
+    element='Ta'; isotope='174TA';
+    Z = '73'; A = '174'
+    maxE = 60; maxXs = 5
+    betaplus_decay_chain = {'isotope': ['74', 1.0, None]} 
+    # {isotope: [productZ, branchingRatio isomerLevel]} #beta+/beta- for tendl feedomg
+    # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
+    calculate_cross_section(element, isotope) 
+    #exfor.plotExforDataFromFilename('Ta_177TA_cumu.txt', setLegend=False, maxE=maxE)    finnes ikke data!
+    talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
+                    isomerLevel = None,
+                    betaFeeding = 'beta+', # only beta+ beta-
+                    branchingRatio = 1.0,
+                    parentIsomerLevel = None)
+    tendl_ta.plotTendl23Unique(productZ=Z, productA=A, color='hotpink')
+    tendl_ta.plotTendl23Unique_feeding(productZ=Z, productA=A, isomerLevel = None,  
+                                  betaPlusDecayChain = betaplus_decay_chain, betaMinusDecayChain = None, isomerDecayChain = None, 
+                                  color=None, lineStyle=None)
+    plt.xlim(0,maxE) 
+    plt.ylim(0, maxXs)
+    set_title(element, isotope, independent=True)
+    # plt.legend(fontsize='5')    
+    set_legend(fontsize='5')
+    name = element+'_'+isotope+'_cumu.pdf'
+    plt.savefig(path_to_cross_section_figures + name)
+    plt.show()
+
+#ta_174TA_cumulative() 
+
+
+def ta_175TA_independent():           # this work stemmer ikke med resten...
     element='Ta'; isotope='175TA';
     Z = '73'; A = '175'
-    maxE = 100; maxXs = 80
+    maxE = 60; maxXs = 80
     exfor.plotExforDataFromFilename('Ta_175TA_ind.txt')  # det står at den er cumulative i EXFOR
     calculate_cross_section(element, isotope)
     talys.plotTalys(productZ=Z, productA=A, targetFoil=element)
@@ -280,30 +340,42 @@ def ta_175TA_independent():
     plt.savefig(path_to_cross_section_figures + name)
     plt.show()
 
-ta_175TA_independent()  
+#ta_175TA_independent()  
 
 
-def ta_176TA_independent():           # maybe this is cumulative?
+def ta_176TA_cumulative():           # stemmer ikke helt kanskje, hvertfal ikke med exfor 
+
     element='Ta'; isotope='176TA';
     Z = '73'; A = '176'
-    maxE = 200; maxXs = 500
-    exfor.plotExforDataFromFilename('Ta_176TA_ind.txt')  # plotting the EXFOR data for comparison.
-    calculate_cross_section(element, isotope)
-    talys.plotTalys(productZ=Z, productA=A, targetFoil=element)
+    maxE = 100; maxXs = 800
+    betaplus_decay_chain = {'isotope': ['74', 1.0, None]} 
+    # {isotope: [productZ, branchingRatio isomerLevel]} #beta+/beta- for tendl feedomg
+    # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
+    #exfor.plotExforDataFromFilename('Ta_177TA_cumu.txt')  # plotting the EXFOR data for comparison.
+    calculate_cross_section(element, isotope) 
+    exfor.plotExforDataFromFilename('Ta_176TA_cumu.txt', setLegend=False, maxE=maxE) # Har kun lastet ned cumulative data fra EXFOR
+    talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
+                    isomerLevel = None,
+                    betaFeeding = 'beta+', # only beta+ beta-
+                    branchingRatio = 1.0,
+                    parentIsomerLevel = None)
     tendl_ta.plotTendl23Unique(productZ=Z, productA=A, color='hotpink')
+    tendl_ta.plotTendl23Unique_feeding(productZ=Z, productA=A, isomerLevel = None,  
+                                  betaPlusDecayChain = betaplus_decay_chain, betaMinusDecayChain = None, isomerDecayChain = None, 
+                                  color=None, lineStyle=None)
     plt.xlim(0,maxE) 
     plt.ylim(0, maxXs)
     set_title(element, isotope, independent=True)
     # plt.legend(fontsize='5')    
     set_legend(fontsize='5')
-    name = element+'_'+isotope+'_ind.pdf'
+    name = element+'_'+isotope+'_cumu.pdf'
     plt.savefig(path_to_cross_section_figures + name)
     plt.show()
 
-#ta_176TA_independent() 
+#ta_176TA_cumulative() 
 
 
-def ta_177TA_cumulative():
+def ta_177TA_cumulative():   # stemmer ganske godt, men noen avstikkere.
 
     element='Ta'; isotope='177TA';
     Z = '73'; A = '177'
@@ -332,22 +404,21 @@ def ta_177TA_cumulative():
     plt.savefig(path_to_cross_section_figures + name)
     plt.show()
 
-#ta_177TA_cumulative() 
+ta_177TA_cumulative() 
 
 
-def ta_178TA_cumulative():     # maybe this is independent? since there is no 178w.
-    element='Ta'; isotope='178TA';
+def ta_178TAg_cumulative():     # Helt på bærtur! hva er dette her?! 
+    element='Ta'; isotope='178TAg';
     Z = '73'; A = '178'
-    maxE = 60; maxXs = 1000      # Hvorfor er usikkerheten så sykt høy??!
+    maxE = 200; maxXs = 800         # Hvorfor er usikkerheten så sykt høy??!
     betaplus_decay_chain = {'isotope': ['74', 1.0, None]} 
     # {isotope: [productZ, branchingRatio isomerLevel]} #beta+/beta- for tendl feedomg
     # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
-    #exfor.plotExforDataFromFilename('Ta_178TA_cumu.txt')  # plotting the EXFOR data for comparison.
     calculate_cross_section(element, isotope) 
     exfor.plotExforDataFromFilename('Ta_178TA_cumu.txt', setLegend=False, maxE=maxE)
     talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
                     isomerLevel = None,
-                    betaFeeding = 'beta+', # only beta+ beta-
+                    betaFeeding = 'beta+', # only beta+ beta- 
                     branchingRatio = 1.0,
                     parentIsomerLevel = None)
     tendl_ta.plotTendl23Unique(productZ=Z, productA=A, color='hotpink')
@@ -363,11 +434,11 @@ def ta_178TA_cumulative():     # maybe this is independent? since there is no 17
     plt.savefig(path_to_cross_section_figures + name)
     plt.show()
 
-#ta_178TA_cumulative() 
+ta_178TAg_cumulative() 
 
 
 
-def ta_180TA_independent():
+def ta_180TA_independent():        # ser ganske bra ut og stemmer ganske godt med exfor og talys et al
     element='Ta'; isotope='180TA';
     Z = '73'; A = '180'
     maxE = 60; maxXs = 400
@@ -388,7 +459,7 @@ def ta_180TA_independent():
 
 
 
-def ta_172HFg_cumulative():
+def ta_172HFg_cumulative():          # her er det også helt på bærtur...
     element='Ta'; isotope='172HFg';
     Z = '72'; A = '172'
     maxE = 200; maxXs = 500    
@@ -397,7 +468,7 @@ def ta_172HFg_cumulative():
     # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
     #exfor.plotExforDataFromFilename('Ta_178TA_cumu.txt')  # plotting the EXFOR data for comparison.
     calculate_cross_section(element, isotope) 
-    #exfor.plotExforDataFromFilename('Ta_172HFg_cumu.txt')
+    exfor.plotExforDataFromFilename('Ta_172HF_cumu.txt')
     talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
                     isomerLevel = None,
                     betaFeeding = 'beta+', # only beta+ beta-
@@ -420,14 +491,13 @@ def ta_172HFg_cumulative():
 
 
 
-def ta_173HF_cumulative():
+def ta_173HF_cumulative():      # her stemmer this work med talys og tendl, men ikke exfor.
     element='Ta'; isotope='173HF';
     Z = '72'; A = '173'
     maxE = 60; maxXs = 50     # Hvorfor er usikkerheten så sykt høy??!
     betaplus_decay_chain = {'isotope': ['73', 1.0, None]} 
     # {isotope: [productZ, branchingRatio isomerLevel]} #beta+/beta- for tendl feedomg
     # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
-    #exfor.plotExforDataFromFilename('Ta_178TA_cumu.txt')  # plotting the EXFOR data for comparison.
     calculate_cross_section(element, isotope) 
     exfor.plotExforDataFromFilename('Ta_173HF_cumu.txt')
     talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
@@ -451,16 +521,15 @@ def ta_173HF_cumulative():
 #ta_173HF_cumulative() 
 
 
-def ta_175HF_cumulative():
+def ta_175HF_cumulative():          # det ser greit ut! ikke helt perfekt men ikke dritt heller
     element='Ta'; isotope='175HF';
     Z = '72'; A = '175'
     maxE = 60; maxXs = 40     # Hvorfor er usikkerheten så sykt høy??!
     betaplus_decay_chain = {'isotope': ['73', 1.0, None]} 
     # {isotope: [productZ, branchingRatio isomerLevel]} #beta+/beta- for tendl feedomg
     # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
-    #exfor.plotExforDataFromFilename('Ta_178TA_cumu.txt')  # plotting the EXFOR data for comparison.
     calculate_cross_section(element, isotope) 
-    exfor.plotExforDataFromFilename('Ta_175HF_cumu.txt')
+    exfor.plotExforDataFromFilename('Ta_175HF_cumu.txt')          # tok kun den cumulative dataen fra EXFOR
     talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
                     isomerLevel = None,
                     betaFeeding = 'beta+', # only beta+ beta-
@@ -482,18 +551,17 @@ def ta_175HF_cumulative():
 #ta_175HF_cumulative() 
 
 
-def ta_180HFm1_cumulative():
+def ta_180HFm1_cumulative():          # fint, men feil? ingen av dataene stemmer?
     element='Ta'; isotope='180HFm1';
     Z = '72'; A = '180'
     maxE = 60; maxXs = 40     # Hvorfor er usikkerheten så sykt høy??!
     betaplus_decay_chain = {'isotope': ['73', 1.0, None]} 
     # {isotope: [productZ, branchingRatio isomerLevel]} #beta+/beta- for tendl feedomg
     # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
-    #exfor.plotExforDataFromFilename('Ta_178TA_cumu.txt')  # plotting the EXFOR data for comparison.
     calculate_cross_section(element, isotope) 
-    #exfor.plotExforDataFromFilename('Ta_180HFm_cumu.txt')
+    exfor.plotExforDataFromFilename('Ta_180HF_cumu.txt')   # exfor sier den er independent...
     talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
-                    isomerLevel = None,
+                    isomerLevel = None, 
                     betaFeeding = 'beta+', # only beta+ beta-
                     branchingRatio = 1.0,
                     parentIsomerLevel = None)
@@ -513,11 +581,124 @@ def ta_180HFm1_cumulative():
 #ta_180HFm1_cumulative() 
 
 
+def ta_172LUm_cumulative():          # ingen punkter
+    element='Ta'; isotope='172LUm';
+    Z = '71'; A = '172'
+    maxE = 60; maxXs = 40     # Hvorfor er usikkerheten så sykt høy??!
+    betaplus_decay_chain = {'isotope': ['72', 1.0, None]} 
+    # {isotope: [productZ, branchingRatio isomerLevel]} #beta+/beta- for tendl feedomg
+    # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
+    calculate_cross_section(element, isotope) 
+    exfor.plotExforDataFromFilename('Ta_172LU_cumu.txt')   # exfor, tok den cumulative
+    talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
+                    isomerLevel = None, 
+                    betaFeeding = 'beta+', # only beta+ beta-
+                    branchingRatio = 1.0,
+                    parentIsomerLevel = None)
+    tendl_ta.plotTendl23Unique(productZ=Z, productA=A, color='hotpink')
+    tendl_ta.plotTendl23Unique_feeding(productZ=Z, productA=A, isomerLevel = None,  
+                                  betaPlusDecayChain = betaplus_decay_chain, betaMinusDecayChain = None, isomerDecayChain = None, 
+                                  color=None, lineStyle=None)
+    plt.xlim(0,maxE) 
+    plt.ylim(0, maxXs)
+    set_title(element, isotope, independent=True)
+    # plt.legend(fontsize='5')    
+    set_legend(fontsize='5')
+    name = element+'_'+isotope+'_cumu.pdf'
+    plt.savefig(path_to_cross_section_figures + name)
+    plt.show()
 
-#     '173TAg','174TAg'
-#     '172HFg'
-#     '172LUm','176LUm','178LUg','179LUg'
+#ta_172LUm_cumulative() 
 
+
+def ta_176LUm_cumulative():          # ingen punkter
+    element='Ta'; isotope='176LUm';
+    Z = '71'; A = '176'
+    maxE = 60; maxXs = 40     # Hvorfor er usikkerheten så sykt høy??!
+    betaplus_decay_chain = {'isotope': ['72', 1.0, None]} 
+    # {isotope: [productZ, branchingRatio isomerLevel]} #beta+/beta- for tendl feedomg
+    # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
+    calculate_cross_section(element, isotope) 
+    #exfor.plotExforDataFromFilename('Ta_176LU_cumu.txt')   # ingen data
+    talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
+                    isomerLevel = None, 
+                    betaFeeding = 'beta+', # only beta+ beta-
+                    branchingRatio = 1.0,
+                    parentIsomerLevel = None)
+    tendl_ta.plotTendl23Unique(productZ=Z, productA=A, color='hotpink')
+    tendl_ta.plotTendl23Unique_feeding(productZ=Z, productA=A, isomerLevel = None,  
+                                  betaPlusDecayChain = betaplus_decay_chain, betaMinusDecayChain = None, isomerDecayChain = None, 
+                                  color=None, lineStyle=None)
+    plt.xlim(0,maxE) 
+    plt.ylim(0, maxXs)
+    set_title(element, isotope, independent=True)
+    # plt.legend(fontsize='5')    
+    set_legend(fontsize='5')
+    name = element+'_'+isotope+'_cumu.pdf'
+    plt.savefig(path_to_cross_section_figures + name)
+    plt.show()
+
+#ta_176LUm_cumulative() 
+
+
+def ta_178LUg_cumulative():          # ingen punkter
+    element='Ta'; isotope='178LUg';
+    Z = '71'; A = '178'
+    maxE = 60; maxXs = 40     # Hvorfor er usikkerheten så sykt høy??!
+    betaplus_decay_chain = {'isotope': ['72', 1.0, None]} 
+    # {isotope: [productZ, branchingRatio isomerLevel]} #beta+/beta- for tendl feedomg
+    # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
+    calculate_cross_section(element, isotope) 
+    #exfor.plotExforDataFromFilename('Ta_176LU_cumu.txt')   # ingen data
+    talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
+                    isomerLevel = None, 
+                    betaFeeding = 'beta+', # only beta+ beta-
+                    branchingRatio = 1.0,
+                    parentIsomerLevel = None)
+    tendl_ta.plotTendl23Unique(productZ=Z, productA=A, color='hotpink')
+    tendl_ta.plotTendl23Unique_feeding(productZ=Z, productA=A, isomerLevel = None,  
+                                  betaPlusDecayChain = betaplus_decay_chain, betaMinusDecayChain = None, isomerDecayChain = None, 
+                                  color=None, lineStyle=None)
+    plt.xlim(0,maxE) 
+    plt.ylim(0, maxXs)
+    set_title(element, isotope, independent=True)
+    # plt.legend(fontsize='5')    
+    set_legend(fontsize='5')
+    name = element+'_'+isotope+'_cumu.pdf'
+    plt.savefig(path_to_cross_section_figures + name)
+    plt.show()
+
+#ta_178LUg_cumulative() 
+
+
+def ta_179LUg_cumulative():          # stemmer ikke helt, men har punkter i this work
+    element='Ta'; isotope='179LUg';
+    Z = '71'; A = '179'
+    maxE = 60; maxXs = 40     # Hvorfor er usikkerheten så sykt høy??!
+    betaplus_decay_chain = {'isotope': ['72', 1.0, None]} 
+    # {isotope: [productZ, branchingRatio isomerLevel]} #beta+/beta- for tendl feedomg
+    # {isotope: [branchingRatio isomerLevel]} #isomer for tendl feedomg
+    calculate_cross_section(element, isotope) 
+    #exfor.plotExforDataFromFilename('Ta_176LU_cumu.txt')   # ingen data
+    talys.plotTalys(productZ=Z, productA=A, targetFoil=element, 
+                    isomerLevel = None, 
+                    betaFeeding = 'beta+', # only beta+ beta-
+                    branchingRatio = 1.0,
+                    parentIsomerLevel = None)
+    tendl_ta.plotTendl23Unique(productZ=Z, productA=A, color='hotpink')
+    tendl_ta.plotTendl23Unique_feeding(productZ=Z, productA=A, isomerLevel = None,  
+                                  betaPlusDecayChain = betaplus_decay_chain, betaMinusDecayChain = None, isomerDecayChain = None, 
+                                  color=None, lineStyle=None)
+    plt.xlim(0,maxE) 
+    plt.ylim(0, maxXs)
+    set_title(element, isotope, independent=True)
+    # plt.legend(fontsize='5')    
+    set_legend(fontsize='5')
+    name = element+'_'+isotope+'_cumu.pdf'
+    plt.savefig(path_to_cross_section_figures + name)
+    plt.show()
+
+ta_179LUg_cumulative() 
 
 
 
@@ -712,7 +893,7 @@ def ni_58CO_independent():
 #     '50MNm1','51MNg','52MNg','52MNm','52MNm1','54MNg','56MNg',
 #     '49CRg','51CRg','55CRg',
 #     '47Vg',
-#     '56NIg','57NIg']
+#     '56NIg','57NIg']          SKAL JEG FAKTISK SETTE IN ALLE DISSE?
 
 
 

@@ -75,7 +75,8 @@ def get_A0(element, isotope):
         path = os.getcwd() + '/../'
         df = pd.read_csv(path + file)
         df_isotope = df[df['isotope'].isin([isotope, isotope + 'g'])]
-        print(df_isotope)
+        if len(df_isotope) > 1:
+            df_isotope = df_isotope[df_isotope['A0'] != 0]
         if df_isotope.empty:
             A0_total[i] = 0
             unc_A0_total[i] = 0

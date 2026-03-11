@@ -34,8 +34,11 @@ EoB_time = '09/24/2025 15:43:00'  # End of beam
 
 # --- Read and combine CSV files ---
 df_list = [pd.read_csv(f) for f in spectra_files]
+# print(df_list[0])
 df_concat = pd.concat(df_list, axis=0)
-
+df_concat = df_concat.drop(['idx', 'sig', 'l', 'h', 'A', 'SNR'], axis=1)
+df_concat = df_concat.dropna(subset=['filename'])
+# print(df_concat.columns)
 # --- Ensure output folder exists ---
 output_path = "Activity/Combined_peak_summary"
 os.makedirs(output_path, exist_ok=True)
@@ -52,27 +55,29 @@ os.makedirs("Activity/Activity_data", exist_ok=True)
 
 for isotope in isotopes_list:
     df_iso = df_concat[df_concat['isotope'] == isotope]
+    # print(df_iso)
     if df_iso.empty:
         print(f"No data for {isotope} in this foil.")
         continue
 
     # Try to detect any count columns; if none found, we still attempt the fit
     count_cols = [c for c in df_iso.columns if "count" in c.lower()]
+    # print(count_cols)
     has_counts = True
     if count_cols:
         vals = df_iso[count_cols].fillna(0).to_numpy(dtype=float)
         has_counts = vals.size and (vals.sum() > 0)
-
+    print(df_iso)
     if not has_counts:
         print(f"No valid counts for {isotope}, skipping fit.")
         continue
 
     dc = ci.DecayChain(isotope, A0=1e6, units='h')
-    try:
-        dc.get_counts(spectra='', EoB=EoB_time, peak_data=df_concat)
-    except Exception as e:
-        print(f"get_counts failed for {isotope}: {e}")
-        continue
+    # try:
+    dc.get_counts(spectra='', EoB=EoB_time, peak_data=df_concat)
+# except Exception as e:
+        # print(f"get_counts failed for {isotope}: {e}")
+        # continue
 
     try:
         isotopes_fit, A0, cov_A0 = dc.fit_A0()

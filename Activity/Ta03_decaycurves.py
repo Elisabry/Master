@@ -32,6 +32,7 @@ EoB_time = '09/24/2025 15:43:00'  # End of beam
 # --- Read and combine CSV files ---
 df_list = [pd.read_csv(f) for f in spectra_files]
 df_concat = pd.concat(df_list, axis=0)
+print(df_concat.columns)
 
 # --- Ensure output folder exists ---
 output_path = "Activity/Combined_peak_summary"
