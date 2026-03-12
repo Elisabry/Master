@@ -57,7 +57,7 @@ def cu_62ZN_monitor():
     plt.savefig(path_to_cross_section_figures + name)
     plt.show()
 
-# cu_62ZN_monitor()
+cu_62ZN_monitor()
 
 def cu_63ZN_monitor():
     element='Cu'; isotope='63ZN';
